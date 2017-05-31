@@ -70,12 +70,13 @@ public class ScreenShot {
         String startDir = resource.appStartUpPath();
        
         String fileNameToSaveTo = startDir+"/WebServer/ScreenTask.jpg";
-         
+        String tempName = startDir+"/WebServer/ScreenTasktmp.jpg" ;
         /**
          * Write the captured image to a file.
          */
-        
-        ImageIO.write(screenCapture, "jpg", new File(fileNameToSaveTo));
+        File tmp = new File(tempName);
+        ImageIO.write(screenCapture, "jpg",tmp );
+        tmp.renameTo(new File(fileNameToSaveTo));
     }
     
     private static void drawMousePointer(BufferedImage screenCapture) throws IOException, URISyntaxException{
