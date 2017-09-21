@@ -139,7 +139,9 @@
         <!-- Preview -->
         <div id="Viewer" class="imgPreview">
             <img id="imgPrev" src="ScreenTask.jpg" class="img-responsive" alt="LIVE! Sever Screen Now!" />
+            <!--<img id="imgPrev" src="ScreenTask.jpg"  alt="LIVE! Sever Screen Now!" />-->
             <br />
+
             <div class="well text-center">
 
                 <div class="row">
@@ -174,13 +176,61 @@
         </div>
 
     </div> <!-- /container -->
+<p>Canvas:</p>
+<canvas id="myCanvas" width="700" height="500" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.
+</canvas>
 
+<!--<video controls poster="ScreenTask.jpg" id="myVideo">
+  <source src="ScreenTask.jpg" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video tag.
+</video>-->
+
+
+<!--<iframe id="myIframe" src="ScreenTask.jpg" height="200" width="300"></iframe>-->
     <script>
-        var refreshInterval = 500;
+        window.onload = function() {
+   var  c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    
+    var img = new Image();
+    img.src =  'ScreenTask.jpg';
+//    ctx.drawImage(img,10,10);
+    ctx.fillRect(50, 25, 150, 100);
+    
 
+    
+    
+    
+    
+    
+    
+};
+
+
+
+       
+        var refreshInterval = 500;
+    setInterval(function(){
+         var  c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    
+    var img = new Image();
+    img.src =  'ScreenTask.jpg';
+    ctx.drawImage(img,10,10); 
+},500);
         var timer = setInterval(function () {
             var ImagePreview = document.getElementById('imgPrev');
             ImagePreview.src = 'ScreenTask.jpg?rand=' + Math.random();
+
+            
+    
+   // ctx.fillRect(50, 25, 150, 100);
+    
+//         var vid =document.getElementById("myVideo");
+//         vid.poster = vid.poster;
+//         vid.load();
         }, refreshInterval);
 
 

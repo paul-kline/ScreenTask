@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -86,7 +87,16 @@ public class ScreenShot {
          */
         File tmp = new File(tempName);
         ImageIO.write(screenCapture, "jpg",tmp );
-        tmp.renameTo(new File(fileNameToSaveTo));
+        File newLoc = new File(fileNameToSaveTo);
+        if(!tmp.renameTo(newLoc)){
+            try {
+                Files.delete(newLoc.toPath());
+            } catch (IOException iOException) {                
+                iOException.printStackTrace();
+                System.out.println("However, I am continuing anyway");
+            }
+            tmp.renameTo(newLoc);
+        };
     }
     
     private static void drawMousePointer(BufferedImage screenCapture) throws IOException, URISyntaxException{

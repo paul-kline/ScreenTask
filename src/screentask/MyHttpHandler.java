@@ -16,6 +16,8 @@ import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -73,7 +75,7 @@ public class MyHttpHandler implements HttpHandler {
                     content=Resources.readFileAsString(file);
                     
                     httpExchange.sendResponseHeaders(200, content.length());
-                    _outputStream.write(content.getBytes());
+                    _outputStream.write(content.getBytes());                 
                     
                 }else{
                     writeImage(file);
@@ -97,5 +99,6 @@ public class MyHttpHandler implements HttpHandler {
                     byte[] imageBytes = bte.toByteArray();
                     _httpExchange.sendResponseHeaders(200, imageBytes.length);
                     _outputStream.write(imageBytes);
+                    
         }
     }
