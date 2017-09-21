@@ -10,6 +10,7 @@ import java.awt.AWTException;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -56,7 +57,16 @@ public class ScreenShot {
          * to be saved to disk.
          */
         
-        Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+//        Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+//System.out.println(frmMain.getInstance());
+//        System.out.println(frmMain.getScreenIndex());
+//        System.out.println("graphics:");
+//        System.out.println( GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[frmMain.getScreenIndex()].getDefaultConfiguration().getBounds());
+//        System.out.println("toolkit:");
+//        System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
+
+        Rectangle screen = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[frmMain.getScreenIndex()].getDefaultConfiguration().getBounds();
+        
         BufferedImage screenCapture = robot.createScreenCapture(screen);
         
         if(drawCursor)
